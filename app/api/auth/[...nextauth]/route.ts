@@ -7,6 +7,7 @@ import User from "@/models/User";
 export const authOptions: AuthOptions = {
   session: { strategy: "jwt" },
 
+  
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
