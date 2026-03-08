@@ -141,8 +141,8 @@ export default function SignupPage() {
         <button
           disabled={loading}
           className={`w-full py-3 rounded-lg text-xl font-semibold transition ${loading
-              ? "bg-purple-400 cursor-not-allowed"
-              : "bg-purple-600 hover:bg-purple-700"
+            ? "bg-purple-400 cursor-not-allowed"
+            : "bg-purple-600 hover:bg-purple-700"
             }`}
         >
           {loading ? "Creating Account..." : "Sign Up"}
