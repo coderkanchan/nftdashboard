@@ -27,7 +27,6 @@ export default function SignupPage() {
     setError("");
 
     try {
-      // 1️⃣ Create account
       const res = await fetch("/api/auth/signUp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,8 +40,6 @@ export default function SignupPage() {
         setLoading(false);
         return;
       }
-
-      // 2️⃣ Auto login
       const login = await signIn("credentials", {
         redirect: false,
         email: form.email,
@@ -72,7 +69,6 @@ export default function SignupPage() {
       >
         <h2 className="text-3xl font-bold text-center">Create Account</h2>
 
-        {/* 🔵 GOOGLE SIGNUP */}
         <button
           type="button"
           onClick={() =>

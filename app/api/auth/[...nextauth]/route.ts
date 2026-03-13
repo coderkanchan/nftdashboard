@@ -7,7 +7,6 @@ import User from "@/models/User";
 export const authOptions: AuthOptions = {
   session: { strategy: "jwt" },
 
-  
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -25,10 +24,8 @@ export const authOptions: AuthOptions = {
 
         const user = await User.findOne({ email: credentials?.email });
 
-        // ❌ USER NOT FOUND
         if (!user) return null;
 
-        // 🚫 BLOCKED USER → LOGIN FAIL
         if (user.isBlocked) {
           throw new Error("ACCOUNT_BLOCKED");
         }
@@ -45,7 +42,6 @@ export const authOptions: AuthOptions = {
   ],
 
   callbacks: {
-    // 🔐 JWT
     async jwt({ token, user }) {
       await connectDB();
 
@@ -62,7 +58,6 @@ export const authOptions: AuthOptions = {
       return token;
     },
 
-    // 🧠 SESSION (❌ NEVER return null)
     async session({ session, token }) {
       session.user.id = token.id as string;
       session.user.role = token.role as "user" | "admin";
@@ -70,9 +65,6 @@ export const authOptions: AuthOptions = {
       return session;
     },
 
-    // async redirect({ baseUrl }) {
-    //   return `${baseUrl}/dashboard`;
-    // },
   },
 
   pages: {

@@ -8,7 +8,6 @@ export const revalidate = 0;
 export default async function WelcomePage() {
   const session = await getServerSession();
 
-  // 🔒 NOT LOGGED IN
   if (!session) {
     redirect("/login");
   }

@@ -26,18 +26,15 @@ export async function PATCH(
       );
     }
 
-    // 🔁 TOGGLE BLOCK (UNCHANGED)
     user.isBlocked = !user.isBlocked;
     await user.save();
 
-    // 🧾 AUDIT LOG (UNCHANGED)
     await AuditLog.create({
       action: user.isBlocked ? "BLOCK_USER" : "UNBLOCK_USER",
       performedBy: adminEmail,
       targetUser: user.email,
     });
 
-    // 📧 EMAIL ALERT (NEW - SAFE ADD)
     try {
       await sendEmail(
         user.email,
@@ -58,7 +55,6 @@ export async function PATCH(
       );
     } catch (mailError) {
       console.error("EMAIL FAILED:", mailError);
-      // ❗ intentionally not failing the request
     }
 
     return NextResponse.json({

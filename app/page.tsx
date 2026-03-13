@@ -23,7 +23,6 @@ export default function Home() {
         className="text-center max-w-2xl "
       >
 
-        {/* Loading State */}
         {status === "loading" && (
           <p className="text-zinc-400 mb-6 animate-pulse">
             Checking your session...

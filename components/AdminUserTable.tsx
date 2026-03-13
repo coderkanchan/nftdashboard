@@ -17,7 +17,6 @@ export default function AdminUserTable() {
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [error, setError] = useState("");
 
-  // 🔄 LOAD USERS
   const loadUsers = async () => {
     setLoading(true);
     setError("");
@@ -56,7 +55,6 @@ export default function AdminUserTable() {
 
       const data = await res.json();
 
-      // ✅ DB TRUTH → UI
       setUsers((prev) =>
         prev.map((u) =>
           u._id === userId ? { ...u, isBlocked: data.blocked } : u
@@ -70,7 +68,6 @@ export default function AdminUserTable() {
   };
 
 
-  // 🗑️ DELETE USER
   const deleteUser = async (userId: string) => {
     if (!confirm("This will permanently delete the user. Continue?")) return;
 
@@ -92,7 +89,6 @@ export default function AdminUserTable() {
     }
   };
 
-  // ⏳ LOADING
   if (loading) {
     return (
       <div className="text-center py-10 text-zinc-400 text-lg">
@@ -101,7 +97,6 @@ export default function AdminUserTable() {
     );
   }
 
-  // ❌ ERROR
   if (error) {
     return (
       <div className="text-center py-10 text-red-400 text-lg">
@@ -110,7 +105,6 @@ export default function AdminUserTable() {
     );
   }
 
-  // 📭 EMPTY
   if (users.length === 0) {
     return (
       <div className="text-center py-10 text-zinc-400 text-lg">
@@ -119,7 +113,6 @@ export default function AdminUserTable() {
     );
   }
 
-  // ✅ TABLE
   return (
     <div className="overflow-x-auto rounded-xl border border-zinc-800">
       <table className="w-full text-left text-sm">

@@ -1,15 +1,4 @@
 
-// type NFT = {
-//   id: number;
-//   name: string;
-// };
-
-// type NFTCardProps = {
-//   nft: NFT;
-// };
-
-
-
 export default function NFTCard({ nft }: { nft: any }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">

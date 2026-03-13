@@ -9,7 +9,6 @@ export async function POST(req: Request) {
 
     const { name, email, password } = await req.json();
 
-    // Check existing user
     const exists = await User.findOne({ email });
     if (exists) {
       return NextResponse.json(
@@ -18,7 +17,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await User.create({

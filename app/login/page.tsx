@@ -53,7 +53,6 @@ export default function LoginPage() {
           Log in to your account
         </h2>
 
-        {/* 🔵 GOOGLE LOGIN */}
         <button
           type="button"
           onClick={() =>

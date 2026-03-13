@@ -1,11 +1,4 @@
 
-
-// type WalletCardProps = {
-//   balance: number;
-// };
-
-
-
 export default function WalletCard({ balance }:  { balance: number }) {
   return (
     <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-3xl">
